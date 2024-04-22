@@ -17,7 +17,13 @@ This PowerShell script facilitates printer management in Windows environments, o
 ## ⚙️ Usage
 1. Clone or download the repository.
 2. Run the `PrinterManagement.ps1` script from PowerShell.
-3. Select the desired option from the menu.
+3. Create a CSV file with the next format:
+4. ```powershell
+    Name;LocalPort;DriverName
+    printer1;\\computer\printer1;Epson
+    printer2;192.168.1.156;Epson
+    ```
+5. Select the desired option from the menu.
 
 ## 📝 Requirements
 - PowerShell 5.1 or higher.
