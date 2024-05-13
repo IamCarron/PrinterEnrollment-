@@ -86,7 +86,7 @@ function Add-Printers {
     }
 
     # Print a completion message
-    Write-Host "Printers created successfully."
+    Read-Host -Prompt "Printers created successfully. Press any key to extit..."
 }
 
 # Function to send test pages
@@ -131,7 +131,7 @@ function Send-TestPages {
     }
 
     # Show a confirmation message that test pages have been sent to all printers.
-    Write-Host "Completed sending test pages to all printers."
+    Read-Host -Prompt "Completed sending test pages to all printers. Press any key to exit..."
 }
 
 # Function to remove printers
@@ -174,6 +174,8 @@ function Remove-Printers {
             Write-Warning "Port $($printer.LocalPort) does not exist."
         }
     }
+    # Show a confirmation message that all the printers and ports have been removed.
+    Read-Host -Prompt "All printers have been removed. Press any key to exit..."
 }
 
 # Function to clear print queues
@@ -189,8 +191,8 @@ function Clear-PrintQueues {
     if ((Get-Service spooler).status -eq 'Stopped') {
         Start-Service Spooler -ErrorAction Ignore
     }
-
-    Write-Host "Print queue cleared successfully"
+    # Shows that the printer queue have been cleared.
+    Read-Host -Prompt "Print queue cleared successfully! Press any key to exit..."
 }
 
 # Function to inventory printers
@@ -200,8 +202,9 @@ function Inventory-Printers {
 
     # Logic to inventory printers
     Get-WmiObject -class win32_printer -ComputerName $env:COMPUTERNAME | Select Caption,PortName,DriverName,PrinterStatus | Export-Csv -Path .\inventory.csv -Delimiter ';' -NoTypeInformation
-
-    Write-Host "Printers inventoried successfully!"
+    
+    # Shows that all the printers have been inventoried.
+    Read-Host -Prompt "Printers inventoried successfully! Press any key to exit..."
 }
 
 # Main menu
